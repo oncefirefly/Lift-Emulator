@@ -19,7 +19,11 @@ export default {
   <div v-for="(floor, index) in floors" :key="index" class="floors">
     <div class="floor">
       {{ floor }}
-      <div v-for="lift in lifts" :key="lift.id" class="lift-container">
+      <div
+        v-for="lift in lifts.filter((lift) => lift.currFloor === floor)"
+        :key="lift.id"
+        class="lift-container"
+      >
         {{ lift }}
       </div>
     </div>

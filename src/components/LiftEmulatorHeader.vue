@@ -1,33 +1,19 @@
 <script>
 export default {
   props: {
-    lifts: {
-      type: Array,
+    liftsLength: {
+      type: Number,
       required: false,
       default: null,
     },
-    floors: {
-      type: Array,
+    floorsLength: {
+      type: Number,
       required: false,
       default: null,
     },
   },
 
-  emits: {
-    addFloor: (floor) => typeof floor === "number",
-    addLift: (lift) => typeof lift === "object",
-  },
-
-  data() {
-    return {
-      floor: this.floors.length || 1,
-      lift: {
-        id: this.lifts.length,
-        busy: false,
-        currFloor: 0,
-      },
-    };
-  },
+  emits: ["addFloor", "addLift"],
 };
 </script>
 
@@ -35,10 +21,22 @@ export default {
   <header>
     <h1>Lift Emulator</h1>
     <div class="add-btns">
-      <button @click="this.$emit('addFloor', this.floor)" class="add-floor-btn">
+      <button
+        @click="this.$emit('addFloor', this.floorsLength + 1)"
+        class="add-floor-btn"
+      >
         Add Floor
       </button>
-      <button @click="this.$emit('addLift', this.lift)" class="add-lift-btn">
+      <button
+        @click="
+          this.$emit('addLift', {
+            id: this.liftsLength + 1,
+            busy: false,
+            currFloor: 1,
+          })
+        "
+        class="add-lift-btn"
+      >
         Add Lift
       </button>
     </div>

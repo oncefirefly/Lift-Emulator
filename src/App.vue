@@ -33,7 +33,7 @@ export default {
   },
 
   watch: {
-    lifts() {
+    floors() {
       console.log(this.lifts.length);
       console.log(this.floors);
     },
@@ -43,10 +43,10 @@ export default {
 
 <template>
   <LiftEmulatorHeader
+    :liftsLength="lifts.length"
+    :floorsLength="floors.length"
     @add-floor="addFloor"
     @add-lift="addLift"
-    :lifts="lifts"
-    :floors="floors"
   />
   <LiftEmulatorMain :floors="floors" :lifts="lifts" />
 </template>
