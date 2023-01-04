@@ -1,6 +1,6 @@
 <script>
 import LiftEmulatorHeader from "./components/LiftEmulatorHeader.vue";
-import LiftEmulatorMain from "./components/LiftEmulatorMain.vue";
+import LiftEmulatorMain from "./components/LiftEmulatorFloors.vue";
 
 export default {
   name: "LiftEmulator",
@@ -12,8 +12,8 @@ export default {
 
   data() {
     return {
-      lifts: [],
-      floors: [],
+      lifts: [{ id: 1, busy: false, currFloor: 1 }],
+      floors: [1],
     };
   },
 

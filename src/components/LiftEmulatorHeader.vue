@@ -19,7 +19,7 @@ export default {
 
 <template>
   <header>
-    <h1>Lift Emulator</h1>
+    <h1 class="title">Lift Emulator</h1>
     <div class="add-btns">
       <button
         @click="this.$emit('addFloor', this.floorsLength + 1)"
@@ -45,26 +45,30 @@ export default {
 
 <style scoped>
 header {
-  padding: 0 1rem 0 1rem;
-  border-bottom: 3px solid #cbd5e1;
-  margin-bottom: 4rem;
+  padding: 0 10px 0 10px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.title {
+  margin-right: 100px;
 }
 
 .add-btns {
   display: flex;
-  margin-right: 1rem;
+  margin-right: 30px;
 }
 
 .add-btns button {
-  margin-right: 1rem;
-  background-color: #8b5cf6;
-  border: 1px solid #8b5cf6;
-  color: white;
+  margin-right: 25px;
+  background-color: #03a1fc;
+  border: none;
+  color: #111;
   border-radius: 5px;
-  padding: 0.5rem 1.25rem;
-  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 </style>
