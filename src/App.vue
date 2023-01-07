@@ -31,13 +31,6 @@ export default {
       alert("Please add floors.");
     },
   },
-
-  watch: {
-    floors() {
-      console.log(this.lifts.length);
-      console.log(this.floors);
-    },
-  },
 };
 </script>
 
