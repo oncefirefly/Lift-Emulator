@@ -32,7 +32,10 @@ export default {
           this.$emit('addLift', {
             id: this.liftsLength + 1,
             busy: false,
+            resting: false,
             currFloor: 1,
+            destFloor: 0,
+            distance: 0,
           })
         "
         class="add-lift-btn"
@@ -44,31 +47,5 @@ export default {
 </template>
 
 <style scoped>
-header {
-  padding: 0 10px 0 10px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.title {
-  margin-right: 100px;
-}
-
-.add-btns {
-  display: flex;
-  margin-right: 30px;
-}
-
-.add-btns button {
-  margin-right: 25px;
-  background-color: #03a1fc;
-  border: none;
-  color: #111;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 20px;
-  font-weight: 600;
-}
+@import url(../assets/header.css);
 </style>
