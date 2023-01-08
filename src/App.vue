@@ -12,9 +12,23 @@ export default {
 
   data() {
     return {
-      lifts: [{ id: 1, busy: false, currFloor: 1 }],
-      floors: [1],
+      lifts: [],
+      floors: [],
     };
+  },
+
+  mounted() {
+    this.lifts = JSON.parse(localStorage.getItem("lifts")) || [
+      {
+        id: 1,
+        busy: false,
+        resting: false,
+        currFloor: 1,
+        destFloor: 0,
+        distance: 0,
+      },
+    ];
+    this.floors = JSON.parse(localStorage.getItem("floors")) || [1];
   },
 
   methods: {
@@ -29,6 +43,19 @@ export default {
       }
 
       alert("Please add floors.");
+    },
+  },
+
+  watch: {
+    lifts: {
+      handler() {
+        localStorage.setItem("lifts", JSON.stringify(this.lifts));
+      },
+      deep: true,
+    },
+
+    floors() {
+      localStorage.setItem("floors", JSON.stringify(this.floors));
     },
   },
 };
