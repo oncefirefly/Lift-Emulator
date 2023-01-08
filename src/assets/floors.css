@@ -1,0 +1,14 @@
+.floors {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.floor {
+  width: 100vw;
+  height: 100px;
+  padding: 0px 10px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #111;
+}

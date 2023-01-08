@@ -1,0 +1,27 @@
+header {
+  padding: 0 10px 0 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.title {
+  margin-right: 100px;
+}
+
+.add-btns {
+  display: flex;
+  margin-right: 30px;
+}
+
+.add-btns button {
+  margin-right: 25px;
+  background-color: #03a1fc;
+  border: none;
+  color: #111;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}

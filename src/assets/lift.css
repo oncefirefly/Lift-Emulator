@@ -1,0 +1,39 @@
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.lift {
+  border: 1px solid #111;
+  width: 100px;
+  height: 100px;
+  background: #fcba03;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.lift-distance-pointer {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lift-pointer-arrow {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.resting {
+  -webkit-animation: blink 1s linear infinite;
+  animation: blink 1s linear infinite;
+}
