@@ -1,5 +1,5 @@
 <script>
-import LiftEmolatorCallBtn from "./LiftEmolatorCallBtn.vue";
+import LiftEmulatorCallBtn from "./LiftEmulatorCallBtn.vue";
 import LiftEmulatorLift from "./LiftEmulatorLift.vue";
 
 export default {
@@ -18,7 +18,7 @@ export default {
 
   components: {
     LiftEmulatorLift,
-    LiftEmolatorCallBtn,
+    LiftEmulatorCallBtn,
   },
 
   methods: {
@@ -82,7 +82,7 @@ export default {
 <template v-if="floors.length">
   <div class="floors">
     <div v-for="(floor, index) in floors" :key="index" class="floor">
-      <LiftEmolatorCallBtn
+      <LiftEmulatorCallBtn
         @call-lift="callLift"
         :floor="floor"
         :lifts="lifts"
