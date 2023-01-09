@@ -13,17 +13,17 @@ export default {
     },
   },
 
-  emits: ["addFloor", "addLift"],
+  emits: ["addFloor", "addLift", "removeFloor", "removeLift"],
 };
 </script>
 
 <template>
   <header>
     <h1 class="title">Lift Emulator</h1>
-    <div class="add-btns">
+    <div class="btns">
       <button
         @click="this.$emit('addFloor', this.floorsLength + 1)"
-        class="add-floor-btn"
+        class="btn"
       >
         Add Floor
       </button>
@@ -38,10 +38,16 @@ export default {
             distance: 0,
           })
         "
-        class="add-lift-btn"
+        class="btn"
       >
         Add Lift
       </button>
+    </div>
+    <div class="btns">
+      <button @click="this.$emit('removeFloor')" class="btn">
+        Remove Floor
+      </button>
+      <button @click="this.$emit('removeLift')" class="btn">Remove Lift</button>
     </div>
   </header>
 </template>

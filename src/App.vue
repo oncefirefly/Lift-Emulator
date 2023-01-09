@@ -28,7 +28,7 @@ export default {
         distance: 0,
       },
     ];
-    this.floors = JSON.parse(localStorage.getItem("floors")) || [1];
+    this.floors = JSON.parse(localStorage.getItem("floors")) || [1, 2, 3, 4, 5];
   },
 
   methods: {
@@ -41,8 +41,14 @@ export default {
         this.lifts = [...this.lifts, lift];
         return;
       }
+    },
 
-      alert("Please add floors.");
+    removeFloor() {
+      this.floors.pop();
+    },
+
+    removeLift() {
+      this.lifts.pop();
     },
   },
 
@@ -54,8 +60,11 @@ export default {
       deep: true,
     },
 
-    floors() {
-      localStorage.setItem("floors", JSON.stringify(this.floors));
+    floors: {
+      handler() {
+        localStorage.setItem("floors", JSON.stringify(this.floors));
+      },
+      deep: true,
     },
   },
 };
@@ -67,6 +76,8 @@ export default {
     :floorsLength="floors.length"
     @add-floor="addFloor"
     @add-lift="addLift"
+    @remove-floor="removeFloor"
+    @remove-lift="removeLift"
   />
   <LiftEmulatorMain :floors="floors" :lifts="lifts" />
 </template>
