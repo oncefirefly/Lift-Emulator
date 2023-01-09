@@ -21,6 +21,16 @@ export default {
     LiftEmulatorCallBtn,
   },
 
+  data() {
+    return {
+      callQueue: [],
+    };
+  },
+
+  mounted() {
+    this.callQueue = JSON.parse(localStorage.getItem("callQueue")) || [];
+  },
+
   methods: {
     getClosestEmptyLift(destFloor) {
       return this.lifts
@@ -43,12 +53,30 @@ export default {
         setTimeout(() => {
           lift.busy = false;
           lift.resting = false;
+
+          if (this.callQueue.length) {
+            this.callLift(this.callQueue[0]);
+            this.callQueue.shift();
+          }
         }, 3000);
       }, 1000 * lift.distance);
     },
 
-    callLift(e) {
+    tryCallLift(e) {
       const destFloor = +e.target.innerHTML;
+      this.callQueue = [...this.callQueue, destFloor];
+      console.log(this.callQueue);
+
+      if (
+        this.callQueue.length &&
+        this.lifts.filter((lift) => lift.busy === false).length
+      ) {
+        this.callQueue.shift();
+        this.callLift(destFloor);
+      }
+    },
+
+    callLift(destFloor) {
       // if there's any lift with the same current floor as the destination floor => do nothing
       if (this.lifts.filter((lift) => lift.currFloor === destFloor).length) {
         return;
@@ -76,6 +104,15 @@ export default {
       this.moveLift(closestLift);
     },
   },
+
+  watch: {
+    callQueue: {
+      handler() {
+        localStorage.setItem("callQueue", JSON.stringify(this.callQueue));
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
@@ -83,7 +120,7 @@ export default {
   <div class="floors">
     <div v-for="(floor, index) in floors" :key="index" class="floor">
       <LiftEmulatorCallBtn
-        @call-lift="callLift"
+        @try-call-lift="tryCallLift"
         :floor="floor"
         :lifts="lifts"
       />

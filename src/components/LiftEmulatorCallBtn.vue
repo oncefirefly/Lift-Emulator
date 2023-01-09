@@ -13,6 +13,8 @@ export default {
     },
   },
 
+  emits: ["tryCallLift"],
+
   computed: {
     floorBtnStyle() {
       return this.lifts.filter((lift) => lift.destFloor === this.floor).length
@@ -25,7 +27,7 @@ export default {
 
 <template>
   <button
-    @click="(e) => this.$emit('callLift', e)"
+    @click="(e) => this.$emit('tryCallLift', e)"
     class="call-btn"
     :style="floorBtnStyle"
   >
