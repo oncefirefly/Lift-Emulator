@@ -10,12 +10,12 @@ header {
   margin-right: 100px;
 }
 
-.add-btns {
+.btns {
   display: flex;
   margin-right: 30px;
 }
 
-.add-btns button {
+.btn {
   margin-right: 25px;
   background-color: #03a1fc;
   border: none;
